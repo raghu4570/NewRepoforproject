@@ -1,0 +1,23 @@
+Creating this file for implementation of changes suggested by my Lead
+import time
+
+from select import select
+from selenium import webdriver
+from selenium.webdriver import ActionChains
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+
+from Tuple import length
+chrome_options=webdriver.ChromeOptions()
+chrome_options.add_argument("headless")
+# ssl certificates
+chrome_options.add_argument("--ignore-certificate--errors")
+
+service_obj = Service(r"C:/Users/yshriraghuramarao/Videos/chromedriver-win64/chromedriver-win64/chromedriver.exe")
+driver = webdriver.Chrome(service=service_obj,options=chrome_options)
+driver.implicitly_wait(2)
+driver.maximize_window()
+driver.get("http://www.uitestingplayground.com/")
+driver.execute_script("window.scrollBy(0,document.body.scrollHeight);")
+driver.get_screenshot_as_file("Screenshot.png")
